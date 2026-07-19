@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך משימות אינטראקטיבי ללימוד Graphite</title>
+    <!-- Tailwind CSS for modern and clean UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Hebrew support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Heebo', sans-serif;
+        }
+        .step-checkbox:checked + span {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .rainbow-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #f472b6, #fb923c, #facc15, #4ade80, #38bdf8, #818cf8, #c084fc);
+            background-size: 300% 100%;
+            animation: rainbow-move 6s linear infinite;
+        }
+        @keyframes rainbow-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .blob {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(40px);
+            opacity: 0.35;
+            z-index: 0;
+        }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-20px) translateX(15px); }
+        }
+        .float-anim { animation: float-slow 8s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 text-slate-800 min-h-screen relative overflow-x-hidden">
+
+    <!-- Decorative floating color blobs -->
+    <div class="blob float-anim" style="width:300px; height:300px; background:#f472b6; top:80px; right:-100px;"></div>
+    <div class="blob float-anim" style="width:250px; height:250px; background:#38bdf8; top:600px; left:-80px; animation-delay:2s;"></div>
+    <div class="blob float-anim" style="width:220px; height:220px; background:#facc15; top:1200px; right:-60px; animation-delay:4s;"></div>
+    <div class="blob float-anim" style="width:260px; height:260px; background:#4ade80; bottom:100px; left:20px; animation-delay:1s;"></div>
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-md relative z-10">
+        <div class="rainbow-bar"></div>
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center md:text-right flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black mb-2">צעדים ראשונים ב-Graphite</h1>
+                <p class="text-lg text-indigo-100 font-light">מסלול משימות אינטראקטיבי לתלמידים ולמורים מתחילים</p>
+            </div>
+            <a href="https://graphite.rs/editor" target="_blank" class="bg-white text-indigo-600 hover:bg-indigo-50 font-bold px-6 py-3 rounded-full shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-2">
+                <span>לפתיחת תוכנת Graphite לחצו כאן</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8 relative z-10">
+        
+        <!-- Sidebar / Toolbox & Overview -->
+        <aside class="lg:col-span-1 space-y-6 relative z-10">
+            
+            <!-- Quick Intro -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-2 border-transparent bg-clip-padding relative" style="background-image: linear-gradient(white, white), linear-gradient(120deg, #f472b6, #818cf8, #38bdf8); background-origin: border-box; background-clip: padding-box, border-box;">
+                <h3 class="text-lg font-bold text-slate-900 mb-2">הסבר קצר לתלמיד</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    ברוכים הבאים לעולם העיצוב הוקטורי! 
+                    במדריך זה תבצעו 4 משימות עיצוב מדליקות בתוכנת <strong>Graphite</strong>. 
+                    בצעו את השלבים אחד-אחד, וסמנו <span class="text-indigo-600 font-bold">V</span> בתיבות הסימון כדי לעקוב אחרי ההתקדמות שלכם. בהצלחה!
+                </p>
+            </div>
+
+            <!-- Graphite Tool Guide -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>
+                    קיצורי דרך וכלים חשובים
+                </h3>
+                <ul class="space-y-3 text-sm text-slate-600">
+                    <li class="flex justify-between border-b pb-1">
+                        <span class="font-bold text-slate-800">V</span>
+                        <span>כלי הבחירה (חץ שחור)</span>
+                    </li>
+                    <li class="flex justify-between border-b pb-1">
+                        <span class="font-bold text-slate-800">M</span>
+                        <span>כלי המלבן (Rectangle)</span>
+                    </li>
+                    <li class="flex justify-between border-b pb-1">
+                        <span class="font-bold text-slate-800">I</span>
+                        <span>כלי העיגול (Ellipse)</span>
+                    </li>
+                    <li class="flex justify-between border-b pb-1">
+                        <span class="font-bold text-slate-800">T</span>
+                        <span>כלי הטקסט (Text)</span>
+                    </li>
+                    <li class="flex justify-between border-b pb-1">
+                        <span class="font-bold text-slate-800">Z</span>
+                        <span>כלי זום (Zoom)</span>
+                    </li>
+                    <li class="flex justify-between border-b pb-1">
+                        <span class="font-bold text-slate-800">Spacebar</span>
+                        <span>לחיצה ארוכה להזזת הקנבס</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Progress Card -->
+            <div class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-6 rounded-2xl border border-indigo-200 text-center shadow-sm">
+                <h3 class="text-sm font-bold text-indigo-900 uppercase tracking-wider mb-2">מד התקדמות כללי</h3>
+                <div class="relative pt-1">
+                    <div class="flex mb-2 items-center justify-between">
+                        <div>
+                            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200" id="progress-badge">
+                                0% הושלם
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
+                        <div id="progress-bar" style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-600 transition-all duration-500"></div>
+                    </div>
+                </div>
+                <button onclick="resetAll()" class="text-xs text-indigo-600 hover:text-indigo-800 underline font-medium focus:outline-none">איפוס כל המשימות</button>
+            </div>
+        </aside>
+
+        <!-- Tasks Content Area -->
+        <section class="lg:col-span-3 space-y-8 relative z-10">
+            
+            <!-- TASK 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden task-card" id="task1">
+                <div class="p-6 bg-amber-50 border-b border-amber-100 flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-amber-500 text-white font-black text-lg w-8 h-8 rounded-full flex items-center justify-center">1</span>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">משימה 1: עיצוב לוגו ראשון שלי</h2>
+                            <p class="text-sm text-slate-500">רמת קושי: קלה מאוד | זמן משוער: 15 דקות</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-3 py-1 rounded-full">משימת בסיס</span>
+                </div>
+                
+                <div class="p-6 space-y-6">
+                    <p class="text-slate-600 leading-relaxed">
+                        נלמד להשתמש בצורות גיאומטריות בסיסיות, לשנות צבעים ולהוסיף טקסט. המטרה היא ליצור לוגו פשוט של חברת טכנולוגיה או חנות בגדים המבוסס על שילוב של עיגול, מלבן וטקסט.
+                    </p>
+
+                    <!-- Steps List -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide border-b pb-2">שלבי המשימה:</h4>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 1:</strong> פתחו דף עבודה חדש ב-Graphite (לחצו על "New Document").
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 2:</strong> בחרו ב<strong>כלי העיגול (Ellipse)</strong> על ידי לחיצה על האות <kbd class="px-2 py-1 bg-slate-100 border rounded text-xs">I</kbd> במקלדת. ציירו עיגול במרכז המסך (החזיקו את מקש Shift לחוץ כדי לקבל עיגול מושלם).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 3:</strong> בחרו את העיגול שנוצר, ובחלונית הצבעים (בצד ימין - Fill) בחרו צבע שאתם אוהבים (למשל: כחול או סגול).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 4:</strong> בחרו ב<strong>כלי הטקסט (Text)</strong> על ידי לחיצה על האות <kbd class="px-2 py-1 bg-slate-100 border rounded text-xs">T</kbd>. לחצו במרכז העיגול וכתבו אות אחת גדולה באנגלית (למשל האות הראשונה של השם שלכם).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 5:</strong> הגדילו את האות (שנו את ה-Size בחלונית הימנית ל-72 ומעלה) ושנו את הצבע שלה ללבן. מקמו אותה בדיוק באמצע העיגול.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 6:</strong> הוסיפו תיבת טקסט נוספת קטנה יותר מתחת לעיגול וכתבו את שם המותג שלכם (למשל: "Design Studio").
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Visual Tip -->
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-amber-900 text-xs flex gap-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span><strong>טיפ עיצובי:</strong> לוגואים טובים הם פשוטים! אל תשתמשו ביותר מ-2 צבעים שונים ושימו לב שהאות במרכז קריאה וברורה.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden task-card" id="task2">
+                <div class="p-6 bg-emerald-50 border-b border-emerald-100 flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-emerald-500 text-white font-black text-lg w-8 h-8 rounded-full flex items-center justify-center">2</span>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">משימה 2: עיצוב נייר מכתבים משרדי (Letterhead)</h2>
+                            <p class="text-sm text-slate-500">רמת קושי: קלה-בינונית | זמן משוער: 20 דקות</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">משימת מיתוג</span>
+                </div>
+                
+                <div class="p-6 space-y-6">
+                    <p class="text-slate-600 leading-relaxed">
+                        במשימה הזו נעצב נייר מכתבים רשמי לעסק שלכם. נלמד לעבוד עם שוליים, למקם את הלוגו שיצרנו בחלק העליון, וליצור עיטורים בחלק התחתון כדי שהדף ייראה מקצועי.
+                    </p>
+
+                    <!-- Steps List -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide border-b pb-2">שלבי המשימה:</h4>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 1:</strong> צרו מסמך חדש במידות דף A4 סטנדרטי (אם אין בבחירה המהירה, הגדירו רוחב של 210 מ"מ וגובה של 297 מ"מ).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 2:</strong> העתיקו את הלוגו שעיצבתם במשימה 1 (בחרו את כל החלקים שלו, לחצו על Ctrl + C ובדף החדש לחצו Ctrl + V).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 3:</strong> הקטינו את הלוגו (החזיקו Shift כדי שלא יתעוות) ומקמו אותו בפינה העליונה (ימנית או שמאלית לפי בחירתכם).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 4:</strong> בצד העליון השני, הוסיפו טקסט קטן עם פרטי הקשר: טלפון, אימייל וכתובת אתר אינטרנט.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 5:</strong> ציירו קו דק ומפריד מתחת ללוגו ולפרטים בעזרת <strong>כלי המלבן (Rectangle)</strong> - פשוט צרו מלבן אופקי דק מאוד בצבע אפור בהיר או בצבע של הלוגו שלכם.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 6:</strong> בתחתית הדף (פוטר), צרו פס מלבני עבה יותר בצבע המותג שלכם כדי לתת מסגרת יפה ורשמית לדף.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Visual Tip -->
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 text-emerald-900 text-xs flex gap-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span><strong>טיפ עיצובי:</strong> השאירו המון שטח לבן וריק במרכז הדף! מטרת הדף היא שיכתבו עליו מכתבים, העיצוב צריך להיות רק מסגרת עדינה.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden task-card" id="task3">
+                <div class="p-6 bg-blue-50 border-b border-blue-100 flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-500 text-white font-black text-lg w-8 h-8 rounded-full flex items-center justify-center">3</span>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">משימה 3: עיצוב הדפס לחולצה (T-Shirt Design)</h2>
+                            <p class="text-sm text-slate-500">רמת קושי: בינונית | זמן משוער: 25 דקות</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">משימת מוצר</span>
+                </div>
+                
+                <div class="p-6 space-y-6">
+                    <p class="text-slate-600 leading-relaxed">
+                        במשימה הזו נעצב גרפיקה מגניבה המיועדת להדפסה על חולצת טריקו (T-Shirt). נלמד לשלב כיתוב מעניין ומעורר השראה יחד עם שילוב של אלמנטים גרפיים ושינויי שקיפות ומיקום.
+                    </p>
+
+                    <!-- Steps List -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide border-b pb-2">שלבי המשימה:</h4>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 1:</strong> פתחו דף עבודה מרובע (למשל 800X800 פיקסלים). זהו המשטח עליו נכין את ההדפס.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 2:</strong> כדי לדמות איך זה ייראה על חולצה כהה, ציירו ריבוע ענק בצבע שחור או כחול כהה שיכסה את כל הדף, ונעלו את השכבה שלו בחלונית השכבות (Layers) כדי שלא תזוז לכם בטעות.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 3:</strong> בחרו ב<strong>כלי הטקסט (Text)</strong> והקלידו משפט מעורר השראה קצר באנגלית (למשל: "Create the Future" או "Just Do Design"). 
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 4:</strong> שנו את הגופן (Font) למשהו עבה ובולט, והגדילו אותו משמעותית. צבעו את הטקסט בצבע בהיר (כמו צהוב, לבן או תכלת).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 5:</strong> הוסיפו אלמנט גרפי מאחורי הטקסט. למשל, ציירו עיגול צהוב גדול מאחורי המילה ("שמש") ושנו את האופסיטי (Opacity - שקיפות) שלו ל-50% כדי שהטקסט יעבור דרכו וייראה משולב.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 6:</strong> השתמשו בחלונית השכבות (Layers) וגררו את שכבת העיגול הצהוב *מתחת* לשכבת הטקסט כדי שהוא לא יסתיר אותו.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Visual Tip -->
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 text-blue-900 text-xs flex gap-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span><strong>טיפ עיצובי:</strong> נסו לשבור את השורות של המשפט שלכם (למשל: מילה אחת בכל שורה) - זה יוצר מראה מודרני והרבה יותר מעניין על חולצות!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 4: CHALLENGE -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden task-card" id="task4">
+                <div class="p-6 bg-purple-50 border-b border-purple-100 flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-purple-500 text-white font-black text-lg w-8 h-8 rounded-full flex items-center justify-center">★</span>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">משימת אתגר: עיצוב כרטיס ביקור אישי</h2>
+                            <p class="text-sm text-slate-500">רמת קושי: מתקדם למתחילים | זמן משוער: 30 דקות</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold bg-purple-100 text-purple-800 px-3 py-1 rounded-full">אתגר מסכם</span>
+                </div>
+                
+                <div class="p-6 space-y-6">
+                    <p class="text-slate-600 leading-relaxed">
+                        משימה מסכמת שמשלבת את כל מה שלמדתם! נעצב כרטיס ביקור יוקרתי דו-צדדי (אנחנו נעצב את הצד הקדמי) הכולל רקע מעניין, אלמנטים גרפיים חותכים וסדר קריאה נכון של פרטים.
+                    </p>
+
+                    <!-- Steps List -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide border-b pb-2">שלבי המשימה:</h4>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 1:</strong> פתחו מסמך בגודל כרטיס ביקור סטנדרטי: רוחב 90 מ"מ וגובה 50 מ"מ (או ביחס דומה בפיקסלים כמו 900X500).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 2:</strong> בחרו צבע רקע כהה ויוקרתי (כמו כחול צי, ירוק בקבוק כהה או אפור פחם).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 3:</strong> השתמשו ב<strong>כלי העט (Pen Tool)</strong> או צרו משולש/מלבן אלכסוני בצבע שונה (למשל זהב או צהוב חרדל) שיחתוך בעדינות את אחת מפינות הכרטיס כדי ליצור עניין ויזואלי.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 4:</strong> כתבו את השם שלכם בגדול ובולט בלבן או בזהב, ומתחתיו את התפקיד שלכם (למשל: "מעצב גרפי" או "מתכנת") בגופן דק וקטן יותר.
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 5:</strong> הציבו את הלוגו המוקטן שלכם במקום מתאים (למשל, בפינה הימנית העליונה).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                            <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="updateProgress()">
+                            <span class="text-slate-700 text-sm">
+                                <strong>צעד 6:</strong> יצאו את היצירה שלכם! מצאו בתפריט את כפתור ה-<strong>Export</strong> ושמרו את כרטיס הביקור שלכם כקובץ תמונה מסוג <strong>PNG</strong> או כקובץ וקטורי מסוג <strong>SVG</strong>.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Visual Tip -->
+                    <div class="bg-purple-50 p-4 rounded-xl border border-purple-200 text-purple-900 text-xs flex gap-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span><strong>טיפ עיצובי:</strong> היררכיה היא שם המשחק! השם שלכם חייב להיות הדבר הראשון שרואים, לאחר מכן התפקיד, ורק אז פרטי הקשר הקטנים.</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-16 border-t border-slate-800 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 text-center space-y-4">
+            <p class="text-sm">מדריך משימות זה נבנה במיוחד עבור מורים ותלמידים העושים את צעדיהם הראשונים בעולם העיצוב.</p>
+            <p class="text-xs text-slate-500">&copy; 2026 כל הזכויות שמורות. מוגש באהבה לקהילת החינוך והטכנולוגיה.</p>
+        </div>
+    </footer>
+
+    <!-- כפתור צף משולב: החלונית הסגולה + תמונת הפרופיל של טוביה מעליה -->
+    <a href="https://gemini.google.com/gem/b5ce5f617ce4" target="_blank" rel="noopener noreferrer"
+       style="z-index: 999999 !important;"
+       class="group fixed bottom-6 left-6 inline-flex items-center justify-center p-0.5 overflow-visible text-sm font-bold text-stone-900 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 hover:text-white transition-all duration-300 shadow-2xl transform hover:scale-105">
+       
+       <span class="relative pl-7 pr-16 py-4 transition-all ease-in duration-75 bg-white rounded-xl group-hover:bg-opacity-0 text-stone-900 group-hover:text-white flex items-center gap-3 shadow-sm font-black text-base">
+         
+         <!-- תמונת העיגול של טוביה - מולבשת בצד ימין/שמאל של החלונית ובולטת החוצה -->
+         <span class="absolute -right-6 top-1/2 -translate-y-1/2 block w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-2xl border-4 border-white z-10 transition duration-300 transform group-hover:scale-110">
+            <img src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="טוביה הבוט" class="w-full h-full object-cover">
+         </span>
+
+         <!-- הטקסט המעוצב שלך -->
+         <span class="text-right leading-tight block mr-4">
+           <span class="block text-stone-900 group-hover:text-white transition-colors">שוחח עם טוביה הבוט של סהר</span>
+           <span class="block text-[11px] font-semibold opacity-75 group-hover:opacity-90 text-stone-600 group-hover:text-purple-200 transition-colors">שיחת AI מתקדמת ב-Gemini Gems</span>
+         </span>
+         
+       </span>
+    </a>
+
+    <!-- Interactive Logic (JavaScript) -->
+    <script>
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.step-checkbox');
+            const totalSteps = checkboxes.length;
+            let checkedSteps = 0;
+
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkedSteps++;
+                }
+            });
+
+            // Calculate percentage
+            const percentage = totalSteps > 0 ? Math.round((checkedSteps / totalSteps) * 100) : 0;
+
+            // Update UI elements
+            const progressBar = document.getElementById('progress-bar');
+            const progressBadge = document.getElementById('progress-badge');
+
+            progressBar.style.width = percentage + '%';
+            progressBadge.innerText = percentage + '% הושלם';
+
+            // Change colors of badge based on progress
+            if (percentage === 100) {
+                progressBadge.className = "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 animate-bounce";
+                progressBadge.innerText = "כל הכבוד! סיימתם! 🎉";
+                progressBar.className = "shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 transition-all duration-500";
+            } else if (percentage > 50) {
+                progressBadge.className = "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-teal-600 bg-teal-200";
+                progressBar.className = "shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-500 transition-all duration-500";
+            } else {
+                progressBadge.className = "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200";
+                progressBar.className = "shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-600 transition-all duration-500";
+            }
+
+            // Save state in local memory for this session
+            const states = Array.from(checkboxes).map(cb => cb.checked);
+            sessionStorage.setItem('graphite_progress', JSON.stringify(states));
+        }
+
+        function resetAll() {
+            const checkboxes = document.querySelectorAll('.step-checkbox');
+            checkboxes.forEach(cb => cb.checked = false);
+            updateProgress();
+            sessionStorage.removeItem('graphite_progress');
+        }
+
+        // Restore progress on page load if user refreshed
+        window.onload = function() {
+            const savedProgress = sessionStorage.getItem('graphite_progress');
+            if (savedProgress) {
+                const states = JSON.parse(savedProgress);
+                const checkboxes = document.querySelectorAll('.step-checkbox');
+                checkboxes.forEach((cb, index) => {
+                    if (states[index] !== undefined) {
+                        cb.checked = states[index];
+                    }
+                });
+                updateProgress();
+            }
+        };
+    </script>
+</body>
+</html>
