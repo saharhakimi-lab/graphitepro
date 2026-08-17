@@ -21,10 +21,12 @@
             border: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
         }
+        /* שינוי עיצוב הטאב הפעיל: מסגרת אדומה בלבד ללא מילוי צבע שמסתיר את הטקסט */
         .tab-btn.active {
-            background-color: #7C3AED;
-            color: #FFFFFF;
-            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+            background-color: #FFFFFF !important;
+            color: #1E293B !important;
+            border: 2px solid #EF4444 !important;
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
         }
         .step-checkbox:checked + div {
             text-decoration: line-through;
@@ -48,15 +50,13 @@
 </head>
 <body class="min-h-screen pb-32 text-slate-800">
 
-    <!-- 🔥 החלונית הצפה המטורללת בתחתית המסך 🔥 -->
+    <!-- 🔥 החלונית הצפה בתחתית המסך 🔥 -->
     <div class="crazy-float fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/90 backdrop-blur-md text-white px-6 py-3.5 rounded-full shadow-2xl border-2 border-purple-500/50 flex items-center gap-4 md:gap-6">
-        <!-- לוגו מטורלל בחלונית הצפה -->
         <div class="relative flex items-center justify-center">
             <div class="absolute inset-0 bg-purple-600 rounded-full blur-md opacity-75"></div>
             <img src="https://lh3.googleusercontent.com/d/1_TppSkoaXIqexIvZnbbR8HzOA38PydNr" alt="Graphite Logo" class="w-10 h-10 object-contain relative z-10">
         </div>
 
-        <!-- טקסט ומד התקדמות מטורלל -->
         <div class="hidden sm:block text-right">
             <div class="text-xs font-black text-purple-300">אקדמיית GRAPHITE LIVE</div>
             <div class="text-sm font-extrabold text-white" id="float-progress-text">0% מכלל המשימות הושלמו 🚀</div>
@@ -64,7 +64,6 @@
 
         <div class="h-8 w-[1px] bg-slate-700 hidden sm:block"></div>
 
-        <!-- כפתורי שליטה מהירים בחלונית הצפה -->
         <div class="flex items-center gap-2">
             <button onclick="switchTask('task1')" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-black px-3 py-1.5 rounded-full transition shadow">1</button>
             <button onclick="switchTask('task2')" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-black px-3 py-1.5 rounded-full transition shadow">2</button>
@@ -72,7 +71,6 @@
             <button onclick="switchTask('task4')" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-black px-3 py-1.5 rounded-full transition shadow">4</button>
         </div>
 
-        <!-- קישור לפתיחת התוכנה -->
         <a href="https://graphite.rs/editor" target="_blank" rel="noopener" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black px-4 py-2 rounded-full transition shadow-lg flex items-center gap-1">
             ⚡ פתח GRAPHITE
         </a>
@@ -92,34 +90,25 @@
 
     <!-- Header Section -->
     <header class="max-w-6xl mx-auto pt-8 px-4">
-        
-        <!-- לוגו GRAPHITE מוגדל משמעותית במרכז העמוד -->
         <div class="flex justify-center mb-6">
             <img src="https://lh3.googleusercontent.com/d/1_TppSkoaXIqexIvZnbbR8HzOA38PydNr" alt="Graphite Logo" class="w-32 h-32 md:w-44 md:h-44 object-contain giant-logo">
         </div>
 
-        <!-- שורת תגיות וכותרת -->
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
-            
-            <!-- תגית נושא משמאל -->
             <div class="bg-purple-50 border border-purple-100 text-purple-800 px-4 py-2 rounded-2xl flex items-center gap-2 text-sm font-bold shadow-sm order-2 md:order-1">
                 📐 נושא: 4 משימות עיצוב וקטורי
             </div>
 
-            <!-- כותרת מרכזית -->
             <div class="text-center order-1 md:order-2">
                 <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-2">קורס הפיצוחים של Graphite</h1>
                 <p class="text-slate-500 font-extrabold text-sm md:text-base">לומדים, מיישמים ומבינים את עולם הוקטור מאלף עד תו 🚀</p>
             </div>
 
-            <!-- תגית אקדמיה מימין -->
             <div class="bg-purple-600 text-white font-black text-center px-6 py-3 rounded-2xl shadow-md shadow-purple-200 order-3 flex items-center justify-center gap-2">
                 🎨 אקדמיית GRAPHITE
             </div>
-
         </div>
 
-        <!-- פינת המנטור -->
         <div class="soft-card rounded-3xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 border-purple-100 bg-gradient-to-r from-white via-purple-50/30 to-white">
             <div class="flex items-center gap-4">
                 <div class="text-4xl shrink-0 bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner">🧙‍♂️</div>
@@ -162,11 +151,7 @@
 
     <!-- Main Content Area -->
     <main class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8">
-        
-        <!-- Sidebar -->
         <aside class="lg:col-span-1 space-y-6">
-            
-            <!-- Progress Card -->
             <div class="soft-card p-6 rounded-3xl border-purple-200 bg-white">
                 <h3 class="font-black text-xs text-purple-700 uppercase tracking-wider mb-2">מד התקדמות כללי</h3>
                 <div class="flex items-center justify-between mb-2">
@@ -180,7 +165,6 @@
                 <button onclick="resetAll()" class="text-xs text-slate-400 hover:text-rose-600 font-extrabold underline block mx-auto">איפוס התקדמות</button>
             </div>
 
-            <!-- Shortcuts Box -->
             <div class="soft-card p-6 rounded-3xl">
                 <h3 class="font-black text-base text-slate-900 mb-4 flex items-center gap-2">
                     ⌨️ קיצורי דרך בתוכנה
@@ -208,12 +192,9 @@
                     </li>
                 </ul>
             </div>
-
         </aside>
 
-        <!-- Task Content Area -->
         <section class="lg:col-span-3">
-            
             <!-- TASK 1 -->
             <div class="soft-card rounded-3xl p-6 md:p-8 task-content" id="task1-content">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
@@ -232,45 +213,38 @@
                     נלמד להשתמש בצורות גיאומטריות בסיסיות, לשנות צבעים ולהוסיף טקסט. המטרה היא ליצור לוגו פשוט המבוסס על שילוב של עיגול, מלבן וטקסט.
                 </p>
 
-                <!-- Checklist -->
                 <div class="space-y-3 mb-6">
                     <h4 class="font-black text-slate-900 text-sm">צעדי המשימה:</h4>
-                    
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 1:</strong> פתחו דף עבודה חדש ב-Graphite (לחצו על "New Document").
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 2:</strong> בחרו ב<strong>כלי העיגול (Ellipse)</strong> על ידי לחיצה על האות <kbd class="px-2 py-0.5 bg-white border border-slate-300 rounded text-xs text-purple-700 font-bold">I</kbd>. ציירו עיגול במרכז המסך (החזיקו Shift לעיגול מושלם).
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 3:</strong> בחרו את העיגול, ובחלונית הצבעים (Fill) בחרו צבע שאתם אוהבים.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 4:</strong> בחרו ב<strong>כלי הטקסט (Text)</strong> בלחיצה על <kbd class="px-2 py-0.5 bg-white border border-slate-300 rounded text-xs text-purple-700 font-bold">T</kbd>. הקלידו את האות הראשונה של השם שלכם במרכז העיגול.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 5:</strong> הגדילו את האות ל-72 ומעלה ושנו את הצבע שלה ללבן למראה נקי.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
@@ -302,42 +276,36 @@
 
                 <div class="space-y-3 mb-6">
                     <h4 class="font-black text-slate-900 text-sm">צעדי המשימה:</h4>
-                    
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 1:</strong> צרו מסמך במידות A4 סטנדרטי (210 מ"מ על 297 מ"מ).
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 2:</strong> העתיקו את הלוגו ממשימה 1 והדביקו אותו בפינה העליונה של הדף.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 3:</strong> הקטינו את הלוגו בפרופורציה ומקמו אותו בראש הדף.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 4:</strong> בצד הנגדי, הוסיפו טקסט קטן עם פרטי הקשר: טלפון, אימייל וכתובת.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 5:</strong> צרו קו הפרדה אופקי דק מתחת ללוגו בעזרת כלי המלבן.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
@@ -364,35 +332,30 @@
 
                 <div class="space-y-3 mb-6">
                     <h4 class="font-black text-slate-900 text-sm">צעדי המשימה:</h4>
-                    
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 1:</strong> פתחו משטח מרובע במידות 800X800 פיקסלים.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 2:</strong> צרו רקע כהה לשם הניגודיות (מלבן שחור או כחול כהה שמהווה את החולצה).
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 3:</strong> הקלידו משפט קצר ומעורר השראה באנגלית בגופן עבה וגדול.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 4:</strong> הוסיפו צורה גיאומטרית מאחורי הטקסט ושנו את השקיפות (Opacity) שלה למראה משולב.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
@@ -419,35 +382,30 @@
 
                 <div class="space-y-3 mb-6">
                     <h4 class="font-black text-slate-900 text-sm">צעדי המשימה:</h4>
-                    
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 1:</strong> פתחו דף בגודל 90 מ"מ על 50 מ"מ.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 2:</strong> הגדירו צבע רקע יוקרתי (כמו כחול כהה או אפור פחם).
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 3:</strong> צרו חיתוך אלכסוני זוויתי בעזרת כלי הצורות או העט בצבע מוזהב/בולט.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
                             <strong>צעד 4:</strong> כתבו את השם שלכם בטקסט מובלט ומעליו/מתחתיו את התפקיד.
                         </div>
                     </label>
-
                     <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-slate-100/80 cursor-pointer transition">
                         <input type="checkbox" class="step-checkbox mt-1 h-5 w-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500" onchange="updateProgress()">
                         <div class="text-slate-700 font-bold text-sm">
@@ -456,7 +414,6 @@
                     </label>
                 </div>
             </div>
-
         </section>
     </main>
 
@@ -467,7 +424,6 @@
 
     <!-- Interactive Script -->
     <script>
-        // Switch between tasks (Tabs)
         function switchTask(taskId) {
             document.querySelectorAll('.task-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -476,7 +432,6 @@
             document.getElementById('btn-' + taskId).classList.add('active');
         }
 
-        // Progress Tracking
         function updateProgress() {
             const checkboxes = document.querySelectorAll('.step-checkbox');
             const totalSteps = checkboxes.length;
