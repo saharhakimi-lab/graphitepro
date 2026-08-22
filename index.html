@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אקדמיית Graphite | מדריך משימות אינטראקטיבי</title>
+    <title>י7 מעצבים תוצרים עם Graphite | מדריך אינטראקטיבי</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -21,7 +21,6 @@
             border: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
         }
-        /* שינוי עיצוב הטאב הפעיל: מסגרת אדומה בלבד ללא מילוי צבע שמסתיר את הטקסט */
         .tab-btn.active {
             background-color: #FFFFFF !important;
             color: #1E293B !important;
@@ -32,19 +31,20 @@
             text-decoration: line-through;
             opacity: 0.5;
         }
-        @keyframes logoPulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.3)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(124, 58, 237, 0.6)); }
-        }
-        .giant-logo {
-            animation: logoPulse 4s infinite ease-in-out;
-        }
         @keyframes floatAnim {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
         }
         .crazy-float {
             animation: floatAnim 3s infinite ease-in-out;
+        }
+        @keyframes crazySpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .mentor-crazy-avatar {
+            animation: crazySpin 4s linear infinite;
         }
     </style>
 </head>
@@ -90,28 +90,31 @@
 
     <!-- Header Section -->
     <header class="max-w-6xl mx-auto pt-8 px-4">
-        <div class="flex justify-center mb-6">
-            <img src="https://lh3.googleusercontent.com/d/1_TppSkoaXIqexIvZnbbR8HzOA38PydNr" alt="Graphite Logo" class="w-32 h-32 md:w-44 md:h-44 object-contain giant-logo">
-        </div>
-
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
-            <div class="bg-purple-50 border border-purple-100 text-purple-800 px-4 py-2 rounded-2xl flex items-center gap-2 text-sm font-bold shadow-sm order-2 md:order-1">
-                📐 נושא: 4 משימות עיצוב וקטורי
+            <!-- לוגו Graphite מוגדל בלבד ללא טקסט -->
+            <div class="bg-purple-50 border border-purple-100 p-2.5 rounded-2xl flex items-center justify-center shadow-sm order-2 md:order-1">
+                <img src="https://lh3.googleusercontent.com/d/1_TppSkoaXIqexIvZnbbR8HzOA38PydNr" alt="Graphite Logo" class="w-14 h-14 object-contain">
             </div>
 
+            <!-- הכותרת הראשית: י7 מעצבים תוצרים עם Graphite -->
             <div class="text-center order-1 md:order-2">
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-2">קורס הפיצוחים של Graphite</h1>
-                <p class="text-slate-500 font-extrabold text-sm md:text-base">לומדים, מיישמים ומבינים את עולם הוקטור מאלף עד תו 🚀</p>
+                <h1 class="text-2xl md:text-4xl font-black text-slate-900 tracking-tight mb-1">
+                    <bdi>י7</bdi> מעצבים תוצרים עם <span dir="ltr" class="inline-block text-purple-700">Graphite</span>
+                </h1>
+                <p class="text-slate-500 font-extrabold text-xs md:text-sm">לומדים, מיישמים ומבינים את עולם הוקטור מאלף עד תו 🚀</p>
             </div>
 
-            <div class="bg-purple-600 text-white font-black text-center px-6 py-3 rounded-2xl shadow-md shadow-purple-200 order-3 flex items-center justify-center gap-2">
+            <div class="bg-purple-600 text-white font-black text-center px-5 py-2.5 rounded-2xl shadow-md shadow-purple-200 order-3 flex items-center justify-center gap-2 text-sm">
                 🎨 אקדמיית GRAPHITE
             </div>
         </div>
 
+        <!-- פינת המנטור עם האוואטר המסתובב המטורלל -->
         <div class="soft-card rounded-3xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 border-purple-100 bg-gradient-to-r from-white via-purple-50/30 to-white">
             <div class="flex items-center gap-4">
-                <div class="text-4xl shrink-0 bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner">🧙‍♂️</div>
+                <div class="relative w-16 h-16 shrink-0 rounded-2xl overflow-hidden border-2 border-purple-400 bg-purple-100 shadow-inner flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/d/1C3DR4Qd6rJX63AgBFxwWTqEZB__IF8Ne" alt="המנטור המטורלל" class="w-full h-full object-cover mentor-crazy-avatar">
+                </div>
                 <div>
                     <h2 class="text-xl font-black text-purple-900 mb-1">פינת המנטור:</h2>
                     <p class="text-slate-600 font-bold text-sm md:text-base">
@@ -253,6 +256,35 @@
                     </label>
                 </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 text-right flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                                <span class="text-xs font-black text-purple-400">📄 קוד SVG מוצע</span>
+                                <button onclick="copyCode('svg-code-1')" class="text-[11px] font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700 transition">
+                                    📋 העתק קוד
+                                </button>
+                            </div>
+                            <pre id="svg-code-1" dir="ltr" class="text-[11px] font-mono text-emerald-400 overflow-x-auto p-2 bg-slate-950 rounded-xl max-h-40 scrollbar-thin"><code>&lt;svg width="160" height="160" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;circle cx="100" cy="85" r="60" fill="#7C3AED" /&gt;
+  &lt;text x="100" y="105" font-size="55" font-family="sans-serif" font-weight="bold" fill="#FFFFFF" text-anchor="middle"&gt;G&lt;/text&gt;
+  &lt;text x="100" y="170" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1E293B" text-anchor="middle" tracking="2"&gt;GRAPHITE STUDIO&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-purple-100 flex flex-col items-center justify-center text-center shadow-sm">
+                        <span class="text-xs font-black text-slate-500 mb-2 self-start">🎨 תצוגה מקדימה של התוצר המוצע:</span>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-center w-full min-h-[160px]">
+                            <svg width="160" height="160" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="85" r="60" fill="#7C3AED" />
+                                <text x="100" y="105" font-size="55" font-family="sans-serif" font-weight="bold" fill="#FFFFFF" text-anchor="middle">G</text>
+                                <text x="100" y="170" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1E293B" text-anchor="middle">GRAPHITE STUDIO</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-purple-50 p-4 rounded-2xl border border-purple-100 text-purple-900 text-xs font-bold flex items-center gap-3">
                     <div class="text-xl">💡</div>
                     <div><strong>טיפ למעצב:</strong> לוגואים מנצחים שומרים על פשטות! אל תעמיסו יותר מדי צבעים.</div>
@@ -313,6 +345,43 @@
                         </div>
                     </label>
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 text-right flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                                <span class="text-xs font-black text-purple-400">📄 קוד SVG מוצע</span>
+                                <button onclick="copyCode('svg-code-2')" class="text-[11px] font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700 transition">
+                                    📋 העתק קוד
+                                </button>
+                            </div>
+                            <pre id="svg-code-2" dir="ltr" class="text-[11px] font-mono text-emerald-400 overflow-x-auto p-2 bg-slate-950 rounded-xl max-h-40 scrollbar-thin"><code>&lt;svg width="150" height="200" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;rect width="210" height="297" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/&gt;
+  &lt;circle cx="30" cy="30" r="12" fill="#7C3AED"/&gt;
+  &lt;text x="30" y="34" font-size="10" font-family="sans-serif" font-weight="bold" fill="#FFF" text-anchor="middle"&gt;G&lt;/text&gt;
+  &lt;text x="50" y="33" font-size="10" font-family="sans-serif" font-weight="bold" fill="#1E293B"&gt;GRAPHITE&lt;/text&gt;
+  &lt;text x="190" y="30" font-size="6" font-family="sans-serif" fill="#64748B" text-anchor="end"&gt;info@graphite.rs&lt;/text&gt;
+  &lt;line x1="20" y1="50" x2="190" y2="50" stroke="#E2E8F0" stroke-width="1.5"/&gt;
+  &lt;rect x="20" y="275" width="170" height="6" fill="#7C3AED" rx="3"/&gt;
+&lt;/svg&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-purple-100 flex flex-col items-center justify-center text-center shadow-sm">
+                        <span class="text-xs font-black text-slate-500 mb-2 self-start">🎨 תצוגה מקדימה של התוצר המוצע:</span>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-center w-full min-h-[160px]">
+                            <svg width="130" height="175" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="210" height="297" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+                                <circle cx="30" cy="30" r="12" fill="#7C3AED"/>
+                                <text x="30" y="34" font-size="10" font-family="sans-serif" font-weight="bold" fill="#FFF" text-anchor="middle">G</text>
+                                <text x="50" y="33" font-size="10" font-family="sans-serif" font-weight="bold" fill="#1E293B">GRAPHITE</text>
+                                <text x="190" y="30" font-size="6" font-family="sans-serif" fill="#64748B" text-anchor="end">info@graphite.rs</text>
+                                <line x1="20" y1="50" x2="190" y2="50" stroke="#E2E8F0" stroke-width="1.5"/>
+                                <rect x="20" y="275" width="170" height="6" fill="#7C3AED" rx="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- TASK 3 -->
@@ -362,6 +431,37 @@
                             <strong>צעד 5:</strong> כווננו את סדר השכבות (Layers) כדי ליצור עומק רב שכבתי.
                         </div>
                     </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 text-right flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                                <span class="text-xs font-black text-purple-400">📄 קוד SVG מוצע</span>
+                                <button onclick="copyCode('svg-code-3')" class="text-[11px] font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700 transition">
+                                    📋 העתק קוד
+                                </button>
+                            </div>
+                            <pre id="svg-code-3" dir="ltr" class="text-[11px] font-mono text-emerald-400 overflow-x-auto p-2 bg-slate-950 rounded-xl max-h-40 scrollbar-thin"><code>&lt;svg width="160" height="160" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;rect width="200" height="200" fill="#0F172A" rx="16"/&gt;
+  &lt;polygon points="100,30 160,150 40,150" fill="#7C3AED" opacity="0.4"/&gt;
+  &lt;text x="100" y="95" font-size="22" font-family="sans-serif" font-weight="900" fill="#10B981" text-anchor="middle"&gt;CREATE&lt;/text&gt;
+  &lt;text x="100" y="125" font-size="22" font-family="sans-serif" font-weight="900" fill="#FFFFFF" text-anchor="middle"&gt;FUTURE&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-purple-100 flex flex-col items-center justify-center text-center shadow-sm">
+                        <span class="text-xs font-black text-slate-500 mb-2 self-start">🎨 תצוגה מקדימה של התוצר המוצע:</span>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-center w-full min-h-[160px]">
+                            <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="200" height="200" fill="#0F172A" rx="16"/>
+                                <polygon points="100,30 160,150 40,150" fill="#7C3AED" opacity="0.4"/>
+                                <text x="100" y="95" font-size="22" font-family="sans-serif" font-weight="900" fill="#10B981" text-anchor="middle">CREATE</text>
+                                <text x="100" y="125" font-size="22" font-family="sans-serif" font-weight="900" fill="#FFFFFF" text-anchor="middle">FUTURE</text>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -413,6 +513,39 @@
                         </div>
                     </label>
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 text-right flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                                <span class="text-xs font-black text-purple-400">📄 קוד SVG מוצע</span>
+                                <button onclick="copyCode('svg-code-4')" class="text-[11px] font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700 transition">
+                                    📋 העתק קוד
+                                </button>
+                            </div>
+                            <pre id="svg-code-4" dir="ltr" class="text-[11px] font-mono text-emerald-400 overflow-x-auto p-2 bg-slate-950 rounded-xl max-h-40 scrollbar-thin"><code>&lt;svg width="180" height="100" viewBox="0 0 270 150" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;rect width="270" height="150" fill="#1E293B" rx="12"/&gt;
+  &lt;polygon points="180,0 270,0 270,150 140,150" fill="#F59E0B" opacity="0.85"/&gt;
+  &lt;text x="25" y="55" font-size="16" font-family="sans-serif" font-weight="bold" fill="#FFFFFF"&gt;ישראל ישראלי&lt;/text&gt;
+  &lt;text x="25" y="75" font-size="10" font-family="sans-serif" fill="#F1F5F9" opacity="0.8"&gt;מעצב ומפתח UI/UX&lt;/text&gt;
+  &lt;text x="25" y="115" font-size="8" font-family="sans-serif" fill="#CBD5E1"&gt;📱 050-1234567 | 🌐 graphite.rs&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-purple-100 flex flex-col items-center justify-center text-center shadow-sm">
+                        <span class="text-xs font-black text-slate-500 mb-2 self-start">🎨 תצוגה מקדימה של התוצר המוצע:</span>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-center w-full min-h-[160px]">
+                            <svg width="180" height="100" viewBox="0 0 270 150" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="270" height="150" fill="#1E293B" rx="12"/>
+                                <polygon points="180,0 270,0 270,150 140,150" fill="#F59E0B" opacity="0.85"/>
+                                <text x="25" y="55" font-size="16" font-family="sans-serif" font-weight="bold" fill="#FFFFFF">ישראל ישראלי</text>
+                                <text x="25" y="75" font-size="10" font-family="sans-serif" fill="#F1F5F9" opacity="0.8">מעצב ומפתח UI/UX</text>
+                                <text x="25" y="115" font-size="8" font-family="sans-serif" fill="#CBD5E1">📱 050-1234567 | 🌐 graphite.rs</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -463,6 +596,13 @@
         function resetAll() {
             document.querySelectorAll('.step-checkbox').forEach(cb => cb.checked = false);
             updateProgress();
+        }
+
+        function copyCode(elementId) {
+            const codeText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert('קוד ה-SVG הועתק ללוח בהצלחה!');
+            });
         }
     </script>
 </body>
